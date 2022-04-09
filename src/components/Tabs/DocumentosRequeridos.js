@@ -143,7 +143,7 @@ const handleSelect=(e)=>{
     </Container>
    
     { cfg_form ? 
-    <ToolkitProvider search bootstrap4 keyField="IdDocumento" 
+    <ToolkitProvider search bootstrap4 keyField="Id" 
         data={ listaDocumentos ? listaDocumentos : [] } 
         columns={ obtenerColumnas() } defaultSorted={ [{ dataField: 'NombreDocumento', order: 'asc' }] }>
         { 

@@ -22,7 +22,7 @@ const LiquidacionTotal= () => {
           <br />
           <Form.Text className='mb-3'>
             {liquidacionPerdida && liquidacionPerdida.length !== 'undefined'
-              ? liquidacionPerdida.liquidacionPerdida['codMonedaIndeminza']
+              ? liquidacionPerdida.liquidacionPerdida['glosaMonedaIndeminza']
               : null}
           </Form.Text>
         </Col>
@@ -36,7 +36,7 @@ const LiquidacionTotal= () => {
           <br />
           <Form.Text className='mb-3' style={{ fontSize: '14px' }}>
             {liquidacionPerdida && liquidacionPerdida.length !== 'undefined'
-              ? liquidacionPerdida.liquidacionPerdida['mtoIndemnizacion']
+              ? formato_monto(liquidacionPerdida.liquidacionPerdida['mtoIndemnizacion'])
               : null}
           </Form.Text>
         </Col>
@@ -100,7 +100,7 @@ const LiquidacionTotal= () => {
           <Form.Text className='mb-3' style={{ fontSize: '14px' }}>
             {liquidacionPerdida && liquidacionPerdida.length !== 'undefined'
               ? liquidacionPerdida.liquidacionPerdida[
-                  'codMonedaPago'
+                  'glosaMonedaPago'
                 ]
               : null}
           </Form.Text>
@@ -177,7 +177,7 @@ const LiquidacionTotal= () => {
           <br />
           <Form.Text className='mb-3' style={{ fontSize: '14px' }}>
             {liquidacionPerdida && liquidacionPerdida.length !== 'undefined'
-              ? liquidacionPerdida.liquidacionPerdida['codMonedaProvision']
+              ? liquidacionPerdida.liquidacionPerdida['glosaMonedaProvision']
               : null}
           </Form.Text>
         </Col>
@@ -205,7 +205,7 @@ const LiquidacionTotal= () => {
           <br />
           <Form.Text className='mb-3' style={{ fontSize: '14px' }}>
             {liquidacionPerdida && liquidacionPerdida.length !== 'undefined'
-              ? liquidacionPerdida.liquidacionPerdida['codMonedaSalvataje']
+              ? liquidacionPerdida.liquidacionPerdida['glosaMonedaSalvataje']
               : null}
           </Form.Text>
         </Col>
