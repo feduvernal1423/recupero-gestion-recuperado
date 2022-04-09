@@ -1,0 +1,13 @@
+export const GET_CONFIG_FORM = 'get_config_form';
+export const GET_ANTECEDENTES_CASO = 'get_antecedentes_caso';
+export const GET_LIQUIDACION_PERDIDA = 'get_liquidacion_perdida';
+export const GET_DOCUMENTACION = 'get_documentacion';
+export const GET_SELECT_DOCUMENTACION = 'get_select_documentacion';
+// export const GET_TIPO_GESTION = 'get_tipo_gestion';
+// export const GET_SITUACION_SINIESTRO = 'get_situacion_siniestro';
+// export const GET_DECLARACION_POLICIAL = 'get_declaracion_policial';
+// export const GET_CRITERIOS_FECHA = 'get_criterios_fecha';
+// export const GET_TAREAS_USUARIO = 'get_tareas_usuario';
+// export const GET_RANGO_FECHAS = 'get_rango_fechas';
+// export const GET_XLS_CASOS_BANDEJA = 'get_xls_casos_bandeja';
+// export const CLEAR_CASOS_BANDEJA = 'clear_casos_bandeja';
