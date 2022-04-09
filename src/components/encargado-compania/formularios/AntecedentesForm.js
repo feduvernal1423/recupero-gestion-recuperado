@@ -2,18 +2,32 @@ import React, { useEffect, useState,Fragment } from 'react'
 import { Card, Col, Container, Form, Row } from 'react-bootstrap'
 import BootstrapTable from 'react-bootstrap-table-next'
 import { useDispatch, useSelector } from 'react-redux'
+import { configuracionFormAction8,obtenerCasoImplicado  } from '../../../store/actions/encargado-cia-action'
 
 
-const Antecedentes = () => {
+const AntecendentesForm = () => {
   const data_encargado_cia = useSelector((state) => state.encargado_compania)
-  const { cfg_form, antecedentesCasos } = data_encargado_cia
+  const { cfg_form, antecedentesCasos,cfg_form8, casoImplicado } = data_encargado_cia
   const [datosSiniestro, setDatosSiniestro] = useState({})
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // @TODO: reemplazar valor estáticos.
+    let query = Buffer.from(JSON.stringify({ "idform": 8, "rutcia": 99061000 })).toString('base64');
+    dispatch(configuracionFormAction8(query));
 
+}, [dispatch]);
+useEffect(() => {
+    // @TODO: reemplazar valor estáticos.
+    let query = Buffer.from(JSON.stringify({ "idImplicado": 1, "idCaso": 5 })).toString('base64');
+    dispatch(obtenerCasoImplicado(query));
+
+}, [dispatch]);
+console.log(casoImplicado && casoImplicado.casoImplicado[0])
   return (
       <>
     <Card className='mt-1 '>
       <Card.Header className='mt-0 mb-0' as='h6' style={{backgroundColor:"#CEECF5", color:"#4F517A"}}>
-        {cfg_form ? cfg_form['gestcasosrecup-tab-antecpol-title-antec'] : null}
+        {cfg_form8 ? cfg_form8['preparacartacobro-title-antecimpl'] : null}
       </Card.Header>
       <Container>
         {cfg_form ? (
@@ -21,43 +35,43 @@ const Antecedentes = () => {
             <Row>
               <Col>
                 <Form.Label
-                  className='mb-0'
+                  className='mb-0 mt-2'
                   style={{ fontWeight: 'bold', fontSize: '14px' }}
                 >
-                  {cfg_form['gestcasosrecup-tab-antecpol-tipodeclara']}
+                  {cfg_form8 && cfg_form8['preparacartacobro-lbl-idimpl']}
                 </Form.Label>{' '}
                 <br />
                 <Form.Text className='mb-3'>
-                  {antecedentesCasos && antecedentesCasos.length !== 'undefined'
-                    ? antecedentesCasos.antecedentesCasos[0]['TipoDeclaracion']
+                  {casoImplicado && casoImplicado.length !== 'undefined'
+                    ? casoImplicado.casoImplicado[0]['RutInvolucrado']
                     : null}
                 </Form.Text>
               </Col>
               <Col>
                 <Form.Label
-                  className='mb-0'
+                  className='mb-0  mt-2'
                   style={{ fontWeight: 'bold', fontSize: '14px' }}
                 >
-                  {cfg_form['gestcasosrecup-tab-antecpol-comisaria']}
+                  {cfg_form8 && cfg_form8 ['preparacartacobro-lbl-nombreimpl']}
                 </Form.Label>
                 <br />
-                <Form.Text className='mb-3' style={{ fontSize: '14px' }}>
-                  {antecedentesCasos && antecedentesCasos.length !== 'undefined'
-                    ? antecedentesCasos.antecedentesCasos[0]['Comisaria']
+                <Form.Text className='mb-3  ' style={{ fontSize: '14px' }}>
+                {casoImplicado && casoImplicado.length !== 'undefined'
+                    ? casoImplicado.casoImplicado[0]['NombreInvolucrado']
                     : null}
                 </Form.Text>
               </Col>
               <Col>
                 <Form.Label
-                  className=' mb-0'
+                  className=' mb-0  mt-2'
                   style={{ fontWeight: 'bold', fontSize: '14px' }}
                 >
-                  {cfg_form['gestcasosrecup-tab-antecpol-nroparte']}
+                  {cfg_form8 && cfg_form8['preparacartacobro-lbl-gestion']}
                 </Form.Label>
                 <br />
                 <Form.Text className='mb-3' style={{ fontSize: '14px' }}>
                   {antecedentesCasos && antecedentesCasos.length !== 'undefined'
-                    ? antecedentesCasos.antecedentesCasos[0]['NroPartePolicial']
+                    ? antecedentesCasos.antecedentesCasos[0]['TipoGestion'] 
                     : null}
                 </Form.Text>
               </Col>
@@ -65,15 +79,15 @@ const Antecedentes = () => {
 
               <Col>
                 <Form.Label
-                  className='mb-0'
+                  className='mb-0  mt-2'
                   style={{ fontWeight: 'bold', fontSize: '14px' }}
                 >
-                  {cfg_form['gestcasosrecup-tab-antecpol-fechaparte']}
+                  {cfg_form8 && cfg_form8['preparacartacobro-lbl-estadorec']}
                 </Form.Label>
                 <br />
                 <Form.Text className='mb-3' style={{ fontSize: '14px' }}>
-                  {antecedentesCasos && antecedentesCasos.length !== 'undefined'
-                    ? antecedentesCasos.antecedentesCasos[0]['FechaPartePolicialFormat']
+                {casoImplicado && casoImplicado.length !== 'undefined'
+                    ? `${casoImplicado.casoImplicado[0]['IsEstadoImplicado']}-${casoImplicado.casoImplicado[0]['EstadoImplicado']}`
                     : null}
                 </Form.Text>
               </Col>
@@ -84,14 +98,12 @@ const Antecedentes = () => {
                   className='mt-3 mb-0'
                   style={{ fontWeight: 'bold', fontSize: '14px' }}
                 >
-                  {cfg_form['gestcasosrecup-tab-antecpol-juzgado']}
+                  {cfg_form8 && cfg_form8['preparacartacobro-input - tipovh']}
                 </Form.Label>
                 <br />
                 <Form.Text className='mb-3' style={{ fontSize: '14px' }}>
-                  {antecedentesCasos && antecedentesCasos.length !== 'undefined'
-                    ? antecedentesCasos.antecedentesCasos[0][
-                        'Juzgado'
-                      ]
+                {casoImplicado && casoImplicado.length !== 'undefined'
+                    ? `${casoImplicado.casoImplicado[0]['IdTipoVehiculo']} - ${casoImplicado.casoImplicado[0]['TipoVehiculo']}`
                     : null}
                 </Form.Text>
               </Col>
@@ -100,14 +112,12 @@ const Antecedentes = () => {
                   className='mt-3 mb-0'
                   style={{ fontWeight: 'bold', fontSize: '14px' }}
                 >
-                  {cfg_form['gestcasosrecup-tab-antecpol-nrocausa']}
+                  {cfg_form8 && cfg_form8['preparacartacobro-input-patente']}
                 </Form.Label>
                 <br />
                 <Form.Text className='mb-3' style={{ fontSize: '14px' }}>
-                  {antecedentesCasos && antecedentesCasos.length !== 'undefined'
-                    ? antecedentesCasos.antecedentesCasos[0][
-                        'NroCausaRol'
-                      ]
+                {casoImplicado && casoImplicado.length !== 'undefined'
+                    ? casoImplicado.casoImplicado[0]['Patente']
                     : null}
                 </Form.Text>
               </Col>
@@ -117,29 +127,30 @@ const Antecedentes = () => {
                   className='mt-3 mb-0'
                   style={{ fontWeight: 'bold', fontSize: '14px' }}
                 >
-                  {cfg_form['gestcasosrecup-tab-antecpol-fechaingcausa']}
+                  {cfg_form8 && cfg_form8['preparacartacobro-input-marca']}
                 </Form.Label>
                 <br />
                 <Form.Text className='mb-3' style={{ fontSize: '14px' }}>
-                  {antecedentesCasos && antecedentesCasos.length !== 'undefined'
-                    ? antecedentesCasos.antecedentesCasos[0]['FechaIngresoCausaFormat']
+                {casoImplicado && casoImplicado.length !== 'undefined'
+                    ? casoImplicado.casoImplicado[0]['IdMarca']
                     : null}
                 </Form.Text>
               </Col>
-             <Col>
+              <Col>
                 <Form.Label
                   className='mt-3 mb-0'
                   style={{ fontWeight: 'bold', fontSize: '14px' }}
                 >
-                  {cfg_form['gestcasosrecup-tab-antecpol-lesionados']}
+                  {cfg_form8 && cfg_form8['preparacartacobro-input-descripcion']}
                 </Form.Label>
                 <br />
                 <Form.Text className='mb-3' style={{ fontSize: '14px' }}>
-                  {antecedentesCasos && antecedentesCasos.length !== 'undefined'
-                    ? antecedentesCasos.antecedentesCasos[0]['Lesionados']
+                {casoImplicado && casoImplicado.length !== 'undefined'
+                    ? casoImplicado.casoImplicado[0]['Descripcion']
                     : null}
                 </Form.Text>
               </Col>
+              
             </Row>
             <Row>
             <Col>
@@ -147,12 +158,12 @@ const Antecedentes = () => {
                   className='mt-3 mb-0'
                   style={{ fontWeight: 'bold', fontSize: '14px' }}
                 >
-                  {cfg_form['gestcasosrecup-tab-antecpol-tribunal']}
+                  {cfg_form8 && cfg_form8['preparacartacobro-cmb-seguro']}
                 </Form.Label>
                 <br />
                 <Form.Text className='mb-3' style={{ fontSize: '14px' }}>
-                  {antecedentesCasos && antecedentesCasos.length !== 'undefined'
-                    ? antecedentesCasos.antecedentesCasos[0]['TribunalFiscalia']
+                {casoImplicado && casoImplicado.length !== 'undefined'
+                    ? `${casoImplicado.casoImplicado[0]['IdSeguroImplicado']} - ${casoImplicado.casoImplicado[0]['SeguroImplicado']}`
                     : null}
                 </Form.Text>
               </Col>
@@ -161,12 +172,26 @@ const Antecedentes = () => {
                   className='mt-3 mb-0'
                   style={{ fontWeight: 'bold', fontSize: '14px' }}
                 >
-                  {cfg_form['gestcasosrecup-tab-antecpol-fechacitacion']}
+                  {cfg_form8 && cfg_form8['preparacartacobro-cmb-cia']}
                 </Form.Label>
                 <br />
                 <Form.Text className='mb-3' style={{ fontSize: '14px' }}>
-                  {antecedentesCasos && antecedentesCasos.length !== 'undefined'
-                    ? antecedentesCasos.antecedentesCasos[0]['FechaCitacionFormat']
+                {casoImplicado && casoImplicado.length !== 'undefined'
+                    ? `${casoImplicado.casoImplicado[0]['IdCiaImplicado']} - ${casoImplicado.casoImplicado[0]['CiaImplicado']}`
+                    : ""}
+                </Form.Text>
+              </Col>
+            <Col>
+                <Form.Label
+                  className='mt-3 mb-0'
+                  style={{ fontWeight: 'bold', fontSize: '14px' }}
+                >
+                  {cfg_form8 && cfg_form8['preparacartacobro-input-siniestroimpl']}
+                </Form.Label>
+                <br />
+                <Form.Text className='mb-3' style={{ fontSize: '14px' }}>
+                {casoImplicado && casoImplicado.length !== 'undefined'
+                    ? casoImplicado.casoImplicado[0]['SiniestroIM']
                     : null}
                 </Form.Text>
               </Col>
@@ -175,26 +200,12 @@ const Antecedentes = () => {
                   className='mt-3 mb-0'
                   style={{ fontWeight: 'bold', fontSize: '14px' }}
                 >
-                  {cfg_form['gestcasosrecup-tab-antecpol-diascitacion']}
+                  {cfg_form8 && cfg_form8['preparacartacobro-input-fechasinimpl']}
                 </Form.Label>
                 <br />
                 <Form.Text className='mb-3' style={{ fontSize: '14px' }}>
-                  {antecedentesCasos && antecedentesCasos.length !== 'undefined'
-                    ? antecedentesCasos.antecedentesCasos[0]['DiasCitacion']
-                    : null}
-                </Form.Text>
-              </Col>
-            <Col>
-                <Form.Label
-                  className='mt-3 mb-0'
-                  style={{ fontWeight: 'bold', fontSize: '14px' }}
-                >
-                  {cfg_form['gestcasosrecup-tab-antecpol-alcohol']}
-                </Form.Label>
-                <br />
-                <Form.Text className='mb-3' style={{ fontSize: '14px' }}>
-                  {antecedentesCasos && antecedentesCasos.length !== 'undefined'
-                    ? antecedentesCasos.antecedentesCasos[0]['Alcoholemia']
+                {casoImplicado && casoImplicado.length !== 'undefined'
+                    ? casoImplicado.casoImplicado[0]['FechaSiniestroIM']
                     : null}
                 </Form.Text>
               </Col>
@@ -209,6 +220,6 @@ const Antecedentes = () => {
   )
 }
 
-export default Antecedentes
+export default AntecendentesForm
 
 

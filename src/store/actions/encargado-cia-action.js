@@ -1,10 +1,12 @@
 import * as api from '../../api/encargado-cia-client';
 import { 
     GET_CONFIG_FORM,
+    GET_CONFIG_FORM8,
     GET_ANTECEDENTES_CASO,
     GET_LIQUIDACION_PERDIDA,
     GET_DOCUMENTACION,
-    GET_SELECT_DOCUMENTACION
+    GET_SELECT_DOCUMENTACION,
+    GET_CASO_IMPLICADO
     // GET_DECLARACION_POLICIAL,
     // GET_SITUACION_SINIESTRO,
     // GET_TAREAS,
@@ -20,6 +22,10 @@ import {
 export const configuracionFormAction = (query) => ({
     type: GET_CONFIG_FORM,
     payload: api.getConfiguracionForm(query)
+});
+export const configuracionFormAction8 = (query) => ({
+    type: GET_CONFIG_FORM8,
+    payload: api.getConfiguracionForm8(query)
 });
 
 export const obtenerAntecedentesCaso = (query) => ({
@@ -40,6 +46,10 @@ export const obtenerDocumentacion = (query) => ({
 export const obtenerSelectDocumentacion = (query) => ({
     type: GET_SELECT_DOCUMENTACION,
     payload: api.getSelectDocumentacion(query)
+});
+export const obtenerCasoImplicado = (query) => ({
+    type: GET_CASO_IMPLICADO,
+    payload: api.getCasoImplicado(query)
 });
 
 // export const obtenerDeclaracionPolicialAction = (query) => ({

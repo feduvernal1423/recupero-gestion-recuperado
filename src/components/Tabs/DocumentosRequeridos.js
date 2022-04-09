@@ -46,28 +46,28 @@ const DocumentosRequeridos = () => {
     return [
         { 
             dataField: 'NombreDocumento', text: cfg_form['gestcasosrecup-tab-documentacion-grilla-tipdocto'], sort: true, headerAlign: 'center', align: 'center',
-            headerFormatter: (column, colIndex, { sortElement, filterElement }) => (<div>{ column.text }<br/>{sortElement}</div>)
+            headerFormatter: (column, colIndex, { sortElement, filterElement }) => (<div>{ column.text }<br/>{sortElement}</div>),headerStyle: { backgroundColor: '#4F517A', color:"white" }
         },
         { 
             dataField: 'Obligatorio', text: cfg_form['gestcasosrecup-tab-documentacion-grilla-obliga'], sort: true, headerAlign: 'center', align: 'center',
-            headerFormatter: (column, colIndex, { sortElement, filterElement }) => (<div>{ column.text }<br/>{sortElement}</div>)
+            headerFormatter: (column, colIndex, { sortElement, filterElement }) => (<div>{ column.text }<br/>{sortElement}</div>),headerStyle: { backgroundColor: '#4F517A', color:"white" }
         },
         { 
             dataField: 'Situacion', text: cfg_form['gestcasosrecup-tab-documentacion-grilla-situacion'], sort: true, headerAlign: 'center', align: 'center',
-            headerFormatter: (column, colIndex, { sortElement, filterElement }) => (<div>{ column.text }<br/>{sortElement}</div>)
+            headerFormatter: (column, colIndex, { sortElement, filterElement }) => (<div>{ column.text }<br/>{sortElement}</div>),headerStyle: { backgroundColor: '#4F517A' , color:"white"}
         },
         { 
             dataField: 'FechaCarga:', text: cfg_form['gestcasosrecup-tab-documentacion-grilla-fechacarga'], sort: true, headerAlign: 'center', align: 'center',
-            headerFormatter: (column, colIndex, { sortElement, filterElement }) => (<div>{ column.text }<br/>{sortElement}</div>)
+            headerFormatter: (column, colIndex, { sortElement, filterElement }) => (<div>{ column.text }<br/>{sortElement}</div>),headerStyle: { backgroundColor: '#4F517A' , color:"white"}
         },
         { 
             dataField: 'Referencia', text: cfg_form['gestcasosrecup-tab-documentacion-grilla-refdocto'], sort: true, headerAlign: 'center', align: 'center',
-            headerFormatter: (column, colIndex, { sortElement, filterElement }) => (<div>{ column.text }<br/>{sortElement}</div>)
+            headerFormatter: (column, colIndex, { sortElement, filterElement }) => (<div>{ column.text }<br/>{sortElement}</div>),headerStyle: { backgroundColor: '#4F517A', color:"white" }
         },
         { 
             dataField: 'UsuarioIngreso', text: cfg_form['gestcasosrecup-tab-documentacion-grilla-usring'], sort: true, headerAlign: 'center', align: 'center',
-            headerFormatter: (column, colIndex, { sortElement, filterElement }) => (<div>{ column.text }<br/>{sortElement}</div>)
-        }
+            headerFormatter: (column, colIndex, { sortElement, filterElement }) => (<div>{ column.text }<br/>{sortElement}</div>),headerStyle: { backgroundColor: '#4F517A', color:"white" }
+        },
        
        
     ];
@@ -111,6 +111,13 @@ const handleSelect=(e)=>{
   return (
      
     <div>
+      <style type='text/css'>
+        {`
+         
+          
+        
+     `}
+      </style>
       <Container>
       <Row className="mt-2">
         <Col>
@@ -130,13 +137,7 @@ const handleSelect=(e)=>{
               ))}
           </Form.Select>
         </Col>
-        <Col  className="d-grid gap-2 d-md-flex justify-content-md-end mt-2 mb-2">                        
-                        <Button type="button" variant="outline-secondary" size="sm" onClick={() => { handleReload() }}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-                            <path fillRule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
-                            <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
-                            </svg>
-                        </Button>
+        <Col >
                     </Col>
       </Row>
       
@@ -149,12 +150,12 @@ const handleSelect=(e)=>{
         { 
         props =>                   
             <div>
-                <div className="bg-secondary text-light rounded mt-4 mb-0">
-                    <h5 className=" p-2">{ `${cfg_form['gestcasosrecup-tab-documentacion-titledocu']} ` }</h5>
+                <div className="rounded mt-4 mb-0" style={{backgroundColor:"#D1F2EB", color:"#4F517A"}}>
+                    <h6 className="p-2">{ `${cfg_form['gestcasosrecup-tab-documentacion-titledocu']} ` }</h6>
                 </div>
             
                                      
-                <BootstrapTable { ...props.baseProps } headerWrapperClasses="table-secondary" pagination={ paginationFactory() } noDataIndication={<div className="text-center">No hay registros encontrados</div>} />
+                <BootstrapTable { ...props.baseProps }  headerWrapperClasses="table-secondary" pagination={ paginationFactory() } noDataIndication={<div className="text-center">No hay registros encontrados</div>} />
             </div>
         }
     </ToolkitProvider>

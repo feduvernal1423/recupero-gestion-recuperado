@@ -12,7 +12,7 @@ const Asegurado = () => {
   return (
       <>
     <Card className='mt-1 '>
-      <Card.Header className='mt-0 mb-0' as='h6' style={{backgroundColor:"#CEECF5", color:"#0040FF"}}>
+      <Card.Header className='mt-0 mb-0' as='h6' style={{backgroundColor:"#CEECF5", color:"#4F517A"}}>
         {cfg_form ? cfg_form['gestcasosrecup-tab-detcaso-title-aseg'] : null}
       </Card.Header>
       <Container>

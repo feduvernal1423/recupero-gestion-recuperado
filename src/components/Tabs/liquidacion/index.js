@@ -42,7 +42,7 @@ const Liquidacion = ({tipo}) => {
   return (
       <>
     <Card className='mt-1 '>
-      <Card.Header className='mt-0 mb-0' as='h6' style={{backgroundColor:"#CEECF5", color:"#0040FF"}}>
+      <Card.Header className='mt-0 mb-0' as='h6' style={{backgroundColor:"#CEECF5", color:"#4F517A"}}>
         {cfg_form && antecedentesCasos ? (antecedentesCasos.antecedentesCasos[0]['IdTipoSiniestro']===15005? cfg_form['gestcasosrecup-tab-liqasegpp-title']:cfg_form['gestcasosrecup-tab-liqasegpt-title']) : null}
       </Card.Header>
       <Container >

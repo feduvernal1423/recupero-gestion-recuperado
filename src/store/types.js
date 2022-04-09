@@ -1,8 +1,10 @@
 export const GET_CONFIG_FORM = 'get_config_form';
+export const GET_CONFIG_FORM8 = 'get_config_form8';
 export const GET_ANTECEDENTES_CASO = 'get_antecedentes_caso';
 export const GET_LIQUIDACION_PERDIDA = 'get_liquidacion_perdida';
 export const GET_DOCUMENTACION = 'get_documentacion';
 export const GET_SELECT_DOCUMENTACION = 'get_select_documentacion';
+export const GET_CASO_IMPLICADO = 'get_caso_implicado';
 // export const GET_TIPO_GESTION = 'get_tipo_gestion';
 // export const GET_SITUACION_SINIESTRO = 'get_situacion_siniestro';
 // export const GET_DECLARACION_POLICIAL = 'get_declaracion_policial';

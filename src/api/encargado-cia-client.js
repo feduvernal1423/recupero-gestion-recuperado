@@ -4,10 +4,27 @@ export const getConfiguracionForm = async(query) => {
     try {
         
         const response = await client.get(`cfg-forms?q=${query}`);
-        console.log(response);
+        console.log(response);      
         if (response.status === 200 && response.data.code === 1) {
             return {
                 cfg_form: response.data.object
+            }
+        } else {
+            throw new Error(response.data.message);
+        }
+
+    } catch(error){
+        throw error;
+    }
+}
+export const getConfiguracionForm8 = async(query) => {
+    try {
+        
+        const response = await client.get(`cfg-forms?q=${query}`);
+        console.log(response, "respuesta form8");      
+        if (response.status === 200 && response.data.code === 1) {
+            return {
+                cfg_form8: response.data.object
             }
         } else {
             throw new Error(response.data.message);
@@ -85,6 +102,24 @@ export const getSelectDocumentacion= async(query) => {
         if (response.status === 200 && response.data.code === 1) {
             return {
                 selectDocumentacion: response.data.object,               
+                query: query
+            }
+        } else {
+            throw new Error(response.data.message);
+        }
+
+    } catch(error){
+        throw error;
+    }
+}
+export const getCasoImplicado= async(query) => {
+    try {
+        
+        const response = await client.getSelect(`caso/implicado?q=${query}`);
+        console.log(response, "Caso Implicado");
+        if (response.status === 200 && response.data.code === 1) {
+            return {
+                casoImplicado: response.data.object,               
                 query: query
             }
         } else {

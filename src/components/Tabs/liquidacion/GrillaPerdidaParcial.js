@@ -12,7 +12,7 @@ const GrillaPerdidaParcial= () => {
     return (
     <div>
     <Card className='mt-1 '>
-      <Card.Header className='mt-0 mb-0' as='h6' style={{backgroundColor:"#CEECF5", color:"#0040FF"}}>
+      <Card.Header className='mt-0 mb-0' as='h6' style={{backgroundColor:"#CEECF5", color:"#4F517A"}}>
       {cfg_form ? (
           <div>
        
@@ -27,7 +27,7 @@ const GrillaPerdidaParcial= () => {
         </div>):null}
       </Card.Header>
       <Container>
-      {liquidacionPerdida && liquidacionPerdida.liquidacionPerdida["detalles"].map(l=>(
+      {liquidacionPerdida && liquidacionPerdida.liquidacionPerdida["detalles"]?.map(l=>(
       <Row key={l.idProveedor}>
         <Col className="mt-2 mb-1">{l.idProveedor}</Col>
         <Col className="mt-2 mb-1">{l.nombreProveedor}</Col>

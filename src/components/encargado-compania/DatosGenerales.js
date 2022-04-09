@@ -11,7 +11,7 @@ const DatosGenerales = () => {
   // El hook useSelector (redux) permite acceder al state en nuestro store.
   const data_encargado_cia = useSelector(state => state.encargado_compania);
   const { cfg_form ,antecedentesCasos} = data_encargado_cia;
-  const [idcaso, setIdCaso]=useState(7)
+  const [idcaso, setIdCaso]=useState(5)
   // El hook useDispatch (redux) permite invocar una action.
   const dispatch = useDispatch();
  ; useEffect(() => { 

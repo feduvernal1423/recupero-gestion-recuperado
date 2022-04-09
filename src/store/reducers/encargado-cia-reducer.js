@@ -1,9 +1,11 @@
 import {
     GET_CONFIG_FORM,
+    GET_CONFIG_FORM8,
     GET_ANTECEDENTES_CASO,
     GET_LIQUIDACION_PERDIDA,
     GET_DOCUMENTACION,
-    GET_SELECT_DOCUMENTACION
+    GET_SELECT_DOCUMENTACION,
+    GET_CASO_IMPLICADO
     // GET_DECLARACION_POLICIAL,
     // GET_ESTADOS_CASO,
     // GET_SITUACION_SINIESTRO,
@@ -21,6 +23,8 @@ export default function encargadoCompaniaReducer(state = {}, action) {
     switch (action.type) {
         case GET_CONFIG_FORM:
             return { ...state, ...action.payload }
+        case GET_CONFIG_FORM8:
+            return { ...state, ...action.payload }
         case GET_ANTECEDENTES_CASO:
             return { ...state, antecedentesCasos:action.payload }
         case GET_LIQUIDACION_PERDIDA:
@@ -29,6 +33,8 @@ export default function encargadoCompaniaReducer(state = {}, action) {
             return { ...state, documentacion: action.payload }
         case GET_SELECT_DOCUMENTACION:
             return { ...state, selectDocumentacion: action.payload }
+        case GET_CASO_IMPLICADO:
+            return { ...state, casoImplicado: action.payload }
         // case GET_ESTADOS_CASO:
         //     return { ...state, estadocaso: action.payload }
         // case GET_TIPO_GESTION:
